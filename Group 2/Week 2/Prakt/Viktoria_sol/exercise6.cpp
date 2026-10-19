@@ -3,24 +3,23 @@
 using namespace std;
 
 void generatePyramid(int n, string side);
-void starStaircase(int n);
-
 int main()
 {
 
     int n;
     cin >> n;
 
-    for (int i = 0; i < n; i++)
+    if (n % 2 == 0)
     {
-        string row = "";
-        for (int j = 0; j <= i; j++)
-        {
-            row += "*";
-        }
-        cout << row << endl;
-        return 0;
+        cout << "enter an odd number" << endl;
+        return 1;
     }
+
+    generatePyramid(n, "Up");
+    cout << string(n, '*') << endl;
+    generatePyramid(n, "Down");
+
+    return 0;
 }
 
 void generatePyramid(int n, string side)
@@ -40,7 +39,7 @@ void generatePyramid(int n, string side)
     }
     else
     {
-        cout << "Invalid side parameter. Use 'Up' or 'Down'." << endl;
+        cout << "Invalid side. Use 'Up' or 'Down'." << endl;
         return;
     }
 
@@ -52,12 +51,11 @@ void generatePyramid(int n, string side)
             row += " ";
         }
 
-     
         for (int j = 0; j < prev_star_count; j++)
         {
             row += "*";
         }
-      
+
         cout << row << endl;
 
         if (side == "Down")
@@ -73,7 +71,6 @@ void generatePyramid(int n, string side)
     }
 }
 
-void starStaircase(int n)
 {
 
     for (int i = 0; i < n; i++)
